@@ -1,0 +1,27 @@
+{
+  "name": "ep_01",
+  "version": "1.0.0",
+  "description": "I am gonna learn here",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest",
+    "build": "parcel build index.html"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Anshul",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.2.63",
+    "parcel": "^2.11.0",
+    "postcss": "^8.4.35",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.2"
+  }
+}
