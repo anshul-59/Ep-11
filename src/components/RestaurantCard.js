@@ -23,4 +23,17 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
+export const restaurantIsOpen = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 px-2 rounded-md">
+          open
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;

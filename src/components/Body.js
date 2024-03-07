@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { restaurantIsOpen } from "./RestaurantCard";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -23,8 +23,6 @@ const Body = () => {
     setRestaurants(
       json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
-
-    console.log(json);
   };
 
   const [searchText, setSearchText] = useState("");
@@ -32,6 +30,8 @@ const Body = () => {
   // Initialize state for the restaurant list and filtered list
   const [restaurants, setRestaurants] = useState([]); // resList
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  const RestaurantCardIsOpen = restaurantIsOpen(RestaurantCard);
 
   // Function to filter top-rated restaurants
   const filterTopRated = () => {
@@ -54,9 +54,15 @@ const Body = () => {
   const renderRestaurants = () => {
     const listToRender =
       filteredRestaurants.length > 0 ? filteredRestaurants : restaurants;
+    console.log(restaurants);
+
     return listToRender.map((resData) => (
       <Link key={resData.info.id} to={"/restaurant/" + resData.info.id}>
-        <RestaurantCard resData={resData} />
+        {resData.info.isOpen ? (
+          <RestaurantCardIsOpen resData={resData} />
+        ) : (
+          <RestaurantCard resData={resData} />
+        )}
       </Link>
     ));
   };
@@ -77,7 +83,7 @@ const Body = () => {
             className="px-4 py-2 bg-green-200 m-4 justify-between rounded-lg items-center"
             onClick={filterByName}
           >
-            search
+            Search
           </button>
         </div>
         <button
