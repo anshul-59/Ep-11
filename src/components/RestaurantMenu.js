@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
   const resInfo = useFetchResMenu(resId);
 
   if (resInfo === null) return <Shimmer />;
-  console.log(resId);
+  // console.log(resId);
 
   const name = resInfo?.cards[0]?.card?.card?.info?.name || "";
   const cuisines = resInfo?.cards[0]?.card?.card?.info?.cuisines || "";
@@ -31,7 +31,10 @@ const RestaurantMenu = () => {
       <h1 className="font-bold text-xl">Menu</h1>
 
       {categories.map((category) => (
-        <RestaurantCategory data={category?.card?.card} />
+        <RestaurantCategory
+          key={category.card.card.title}
+          data={category?.card?.card}
+        />
       ))}
 
       <h2>

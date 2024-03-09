@@ -1,7 +1,7 @@
 import ItemList from "./itemList";
 
 const RestaurantCategory = ({ data }) => {
-  console.log(data);
+  //   console.log(data);
   return (
     <div>
       <div className="w-6/12 mx-auto my-4 bg-gray-200 shadow-lg p-4 rounded-md ">
